@@ -1,42 +1,88 @@
 var React = require('react');
 
+var SelectField = require('material-ui/lib/select-field')
+var DropDownMenu = require('material-ui/lib/DropDownMenu')
+var MenuItem = require('material-ui/lib/menus/menu-item')
+
 var QueryForm = React.createClass({
   propTypes: {
-    start: React.PropTypes.string.isRequired,
-    end: React.PropTypes.string.isRequired,
+    month: React.PropTypes.string.isRequired,
+    year: React.PropTypes.string.isRequired,
     subreddit: React.PropTypes.string.isRequired,
   },
 
   getInitialState: function() {
     return { 
-      start: this.props.start,
-      end: this.props.end,
-      subreddit: this.props.subreddit
+      month: this.props.month,
+      year: this.props.year,
+      subreddit: this.props.subreddit,
     };
   },
 
-  onStartChange: function(evt) {
-    this.setState({ start: evt.target.value });
+  handleMonthChange: function(evt) {
+    this.setState({month:evt.target.innerText});
+    console.log(evt);
+    console.log(this.state);
   },
 
-  onEndChange: function(evt) {
-    this.setState({ end: evt.target.value });
+  handleSubredditChange: function(evt) {
+    this.setState({subreddit:evt.target.innerText});
   },
 
-  onSubredditChange: function(evt) {
-    this.setState({ subreddit: evt.target.value });
-  },
-
+  handleYearChange: function(evt) {
+    this.setState({year:evt.target.innerText});
+  },  
+   
   render: function() {
     return (
-      <form>
-        From: <input name='start' type='date' value={this.state.start} onChange={this.onStartChange}/>
-        To: <input name='end' type='date' value={this.state.end} onChange={this.onEndChange}/>
-        /r/<input name='subreddit' type='string' value={this.state.subreddit} onChange={this.onSubredditChange}/>
+      <form style={styles.form}>
+          <span style={styles.field}>
+            <DropDownMenu value={this.state.subreddit} onChange={this.handleSubredditChange}>
+              <MenuItem value={1} primaryText="news"/>
+              <MenuItem value={2} primaryText="politics"/>
+            </DropDownMenu>
+          </span>  
+          <span style={styles.field}>
+              <SelectField value={this.state.month} onChange={this.handleMonthChange}>
+                <MenuItem value={1} primaryText="January"/>
+                <MenuItem value={2} primaryText="February"/>
+                <MenuItem value={3} primaryText="March"/>
+                <MenuItem value={4} primaryText="April"/>
+                <MenuItem value={5} primaryText="May"/>
+                <MenuItem value={6} primaryText="June"/>
+                <MenuItem value={7} primaryText="July"/>
+                <MenuItem value={8} primaryText="August"/>
+                <MenuItem value={9} primaryText="September"/>
+                <MenuItem value={10} primaryText="October"/>
+                <MenuItem value={11} primaryText="November"/>
+                <MenuItem value={12} primaryText="December"/>
+              </SelectField>
+          </span>
+          <span style={styles.field}>
+            <SelectField value={this.state.year} onChange={this.handleYearChange}>
+              <MenuItem value={1} primaryText="2014" />
+              <MenuItem value={2} primaryText="2015" />
+            </SelectField>
+          </span>
+          <span style={styles.blankspace}></span>
       </form>
     );
   },
 });
+
+var styles = {
+  form: {
+    display: 'flex'
+  },
+
+  field: {
+    flexGrow: 1,
+  },
+
+  blankspace: {
+    flexGrow: 3,
+  },
+};
 
 module.exports = {
   form: QueryForm,

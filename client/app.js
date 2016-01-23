@@ -2,20 +2,28 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var QueryForm = require('./form').form;
 
+var injectTapEventPlugin = require('react-tap-event-plugin');
+
+// Needed for onTouchTap
+// Can go away when react 1.0 release
+// Check this repo:
+// https://github.com/zilverline/react-tap-event-plugin
+injectTapEventPlugin();
+
 defaults = {
-    start: '2015-11-01',
-    end: '2016-01-01',
+    month: 'December',
+    year: '2015',
     sub: 'politics',
 }
 
-var Book = React.createClass({
+var Main = React.createClass({
   render: function() {
     return (
-    <div>
-      <QueryForm start={defaults.start} end={defaults.end} subreddit={defaults.sub} />
+    <div style={{ fontFamily: "'Roboto', san-serif",}}>
+      <QueryForm month={defaults.month} year={defaults.year} subreddit={defaults.sub} />
     </div>
     );
   }
 });
 
-ReactDOM.render(<Book />, document.getElementById('container'));
+ReactDOM.render(<Main />, document.getElementById('container'));
