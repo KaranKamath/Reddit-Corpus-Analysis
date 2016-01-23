@@ -22,7 +22,6 @@ module.exports = function(grunt) {
     }
   })
   grunt.loadNpmTasks('grunt-browserify')
-  grunt.loadNpmTasks('grunt-reactify')
   grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-serve')
 }

@@ -1,20 +1,21 @@
-var React = require('react')
-var ReactDOM = require('react-dom')
+var React = require('react');
+var ReactDOM = require('react-dom');
+var QueryForm = require('./form').form;
 
-var data = {
-  title: 'Professional Node.js',
-  author: 'Pedro Teixeira'
-};
+defaults = {
+    start: '2015-11-01',
+    end: '2016-01-01',
+    sub: 'politics',
+}
 
 var Book = React.createClass({
   render: function() {
     return (
     <div>
-      <p>{this.props.data.title}</p>
-      <p>{this.props.data.author}</p>
+      <QueryForm start={defaults.start} end={defaults.end} subreddit={defaults.sub} />
     </div>
     );
   }
 });
 
-ReactDOM.render(<Book data={data}/>, document.getElementById('container'));
+ReactDOM.render(<Book />, document.getElementById('container'));
