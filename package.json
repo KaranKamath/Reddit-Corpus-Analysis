@@ -1,0 +1,19 @@
+{
+  "name": "reddit-comment-corpus",
+  "version": "1.0.0",
+  "description": "Corpus Analysis for Public Reddit Data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaranKamath/Reddit-Corpus-Analysis.git"
+  },
+  "author": "karan, ashray, akshat, jishnu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaranKamath/Reddit-Corpus-Analysis/issues"
+  },
+  "homepage": "https://github.com/KaranKamath/Reddit-Corpus-Analysis#readme"
+}
