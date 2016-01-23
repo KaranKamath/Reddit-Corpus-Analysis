@@ -71,7 +71,7 @@ var QueryForm = React.createClass({
             </SelectField>
           </span>
           <span style={styles.blankspace}></span>
-          <RaisedButton label="Query" onTouchTap={this.onTouchTap}/>
+          <RaisedButton label="Query" secondary={true} onTouchTap={this.onTouchTap}/>
       </form>
     );
   },
