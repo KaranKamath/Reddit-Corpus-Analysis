@@ -1,14 +1,16 @@
 var React = require('react');
 
-var SelectField = require('material-ui/lib/select-field')
-var DropDownMenu = require('material-ui/lib/DropDownMenu')
-var MenuItem = require('material-ui/lib/menus/menu-item')
+var SelectField = require('material-ui/lib/select-field');
+var DropDownMenu = require('material-ui/lib/DropDownMenu');
+var MenuItem = require('material-ui/lib/menus/menu-item');
+var RaisedButton = require('material-ui/lib/raised-button');
 
 var QueryForm = React.createClass({
   propTypes: {
     month: React.PropTypes.string.isRequired,
     year: React.PropTypes.string.isRequired,
     subreddit: React.PropTypes.string.isRequired,
+    onSubmit: React.PropTypes.func.isRequired,
   },
 
   getInitialState: function() {
@@ -31,7 +33,11 @@ var QueryForm = React.createClass({
 
   handleYearChange: function(evt) {
     this.setState({year:evt.target.innerText});
-  },  
+  },
+
+  onTouchTap: function(e) {
+    this.props.onSubmit(this.state);
+  },
    
   render: function() {
     return (
@@ -65,6 +71,7 @@ var QueryForm = React.createClass({
             </SelectField>
           </span>
           <span style={styles.blankspace}></span>
+          <RaisedButton label="Query" onTouchTap={this.onTouchTap}/>
       </form>
     );
   },

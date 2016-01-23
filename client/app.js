@@ -17,10 +17,15 @@ defaults = {
 }
 
 var Main = React.createClass({
-  render: function() {
+ 
+ handleSubmit: function(query) {
+    console.log(query);
+ },
+
+ render: function() {
     return (
     <div style={{ fontFamily: "'Roboto', san-serif",}}>
-      <QueryForm month={defaults.month} year={defaults.year} subreddit={defaults.sub} />
+      <QueryForm month={defaults.month} year={defaults.year} subreddit={defaults.sub} onSubmit={this.handleSubmit}/>
     </div>
     );
   }
