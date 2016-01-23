@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/KaranKamath/Reddit-Corpus-Analysis/issues"
   },
-  "homepage": "https://github.com/KaranKamath/Reddit-Corpus-Analysis#readme"
+  "homepage": "https://github.com/KaranKamath/Reddit-Corpus-Analysis#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }
