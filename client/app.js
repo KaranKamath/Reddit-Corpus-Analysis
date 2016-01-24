@@ -58,17 +58,37 @@ var Main = React.createClass({
  
  handleSubmit: function(query) {
     console.log(query);
-    defaults = defaults2
-    this.setState({ localUrl: '/data/' + query.month + query.year + '.json'});
+    defaults = defaults2 
+    newlocalUrl = '/data/' + query.month + query.year + '.json';
+    this.setState({ localUrl: newlocalUrl});
+    $.getJSON(this.state.localUrl, function(result) {
+      console.log(result);
+      if (this.isMounted()) {
+        this.setState({
+          topicData: result,
+        });
+      }
+    }.bind(this)); 
+    console.log(this.state.localUrl);
  },
 
  getInitialState: function() {
-    localUrl='/data/November2015.json',
+    return {
+        localUrl: '/data/November2015.json',
+        topicData: '',
+    };
  },
 
  componentDidMount: function() {
-    
- }
+   $.getJSON(this.state.localUrl, function(result) {
+     console.log(result);
+     if (this.isMounted()) {
+       this.setState({
+         topicData: result,
+       });
+     }
+   }.bind(this)); 
+ },
 
  render: function() {
     return (
