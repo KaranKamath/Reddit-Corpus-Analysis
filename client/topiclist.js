@@ -16,11 +16,8 @@ var TopicList = React.createClass({
 
   render: function() {
     return (
-    <List>
-      <ListItem primaryText={this.props.topics[0]['words'][0]} rightIcon={<ActionInfo />} />
-      <ListItem primaryText={this.props.topics[1]['words'][0]} rightIcon={<ActionInfo />} />
-      <ListItem primaryText={this.props.topics[2]['words'][0]} rightIcon={<ActionInfo />} />
-    </List>
+      <List>
+      </List>
     );
   },
 });
