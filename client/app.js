@@ -65,7 +65,8 @@ var Main = React.createClass({
       console.log(result);
       if (this.isMounted()) {
         this.setState({
-          topicData: result,
+          topics: result['topics'],
+          posts: result['posts'],
         });
       }
     }.bind(this)); 
@@ -75,8 +76,13 @@ var Main = React.createClass({
  getInitialState: function() {
     return {
         localUrl: '/data/November2015.json',
-        topicData: '',
+        topics: {},
+        posts: {},
     };
+ },
+
+ componentWillMount: function() {
+    console.log(self.state);
  },
 
  componentDidMount: function() {
@@ -84,18 +90,20 @@ var Main = React.createClass({
      console.log(result);
      if (this.isMounted()) {
        this.setState({
-         topicData: result,
+         topics: result['topics'],
+         posts: result['posts'],
        });
      }
    }.bind(this)); 
  },
 
  render: function() {
+    console.log(self.state);
     return (
     <div style={{ fontFamily: "'Roboto', san-serif",}}>
       <QueryForm month={defaults.month} year={defaults.year} subreddit={defaults.sub} onSubmit={this.handleSubmit}/>
       <div style={{ display: 'flex'}}>
-        <WordCloud style={{ flexGrow: 1 }} wordmap={defaults.wordmap}/>
+        <WordCloud style={{ flexGrow: 1 }} wordmap={self.state.topics}/>
         <TopicList topics={defaults.topics} style={{ flexGrow: 1}}></TopicList>
       </div>
     </div>

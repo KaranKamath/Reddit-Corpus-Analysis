@@ -44,7 +44,6 @@ var QueryForm = React.createClass({
       <form style={styles.form}>
           <span style={styles.field}>
             <DropDownMenu value={this.state.subreddit} onChange={this.handleSubredditChange}>
-              <MenuItem value="/r/news" primaryText="news"/>
               <MenuItem value="/r/politics" primaryText="politics"/>
             </DropDownMenu>
           </span>  
@@ -61,12 +60,10 @@ var QueryForm = React.createClass({
                 <MenuItem value="September" primaryText="September"/>
                 <MenuItem value="October" primaryText="October"/>
                 <MenuItem value="November" primaryText="November"/>
-                <MenuItem value="December" primaryText="December"/>
               </SelectField>
           </span>
           <span style={styles.field}>
             <SelectField value={this.state.year} onChange={this.handleYearChange}>
-              <MenuItem value="2014" primaryText="2014" />
               <MenuItem value="2015" primaryText="2015" />
             </SelectField>
           </span>
