@@ -44,9 +44,9 @@ var WordCloud = React.createClass({
             });
         }).on("click", function(d) {
             console.log(d);
-            debugger;
+
         });
-        
+
     },
 
     componentDidMount: function() {
