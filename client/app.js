@@ -63,11 +63,17 @@ var Main = React.createClass({
     this.setState({ localUrl: newlocalUrl});
     $.getJSON(this.state.localUrl, function(result) {
       console.log(result);
+
+      function toArr(obj) {
+        return Object.keys(obj).map(function (key) return { text: key size:{obj[key]}; });
+      }
+
       if (this.isMounted()) {
         this.setState({
-          topics: result['topics'],
+          topics: toArr(result['topics']),
           posts: result['posts'],
         });
+        console.log(this.state.topics);
       }
     }.bind(this)); 
     console.log(this.state.localUrl);
@@ -76,34 +82,40 @@ var Main = React.createClass({
  getInitialState: function() {
     return {
         localUrl: '/data/November2015.json',
-        topics: {},
-        posts: {},
+        topics: [],
+        posts: [],
     };
  },
 
- componentWillMount: function() {
-    console.log(self.state);
- },
-
  componentDidMount: function() {
-   $.getJSON(this.state.localUrl, function(result) {
+  function toArr(obj) {
+    return Object.keys(obj).map(function (key) return { text: key size:{obj[key]}; });
+  }
+
+  $.getJSON(this.state.localUrl, function(result) {
      console.log(result);
      if (this.isMounted()) {
        this.setState({
-         topics: result['topics'],
+         topics: toArr(result['topics']),
          posts: result['posts'],
        });
+       console.log(this.state.topics);
      }
    }.bind(this)); 
  },
 
  render: function() {
-    console.log(self.state);
+    console.log(this.state);
+    var wm = {};
+    if (this.state !== undefined) {
+        wm = this.state.topics;
+    }
+
     return (
     <div style={{ fontFamily: "'Roboto', san-serif",}}>
       <QueryForm month={defaults.month} year={defaults.year} subreddit={defaults.sub} onSubmit={this.handleSubmit}/>
       <div style={{ display: 'flex'}}>
-        <WordCloud style={{ flexGrow: 1 }} wordmap={self.state.topics}/>
+        <WordCloud style={{ flexGrow: 1 }} wordmap={wm}/>
         <TopicList topics={defaults.topics} style={{ flexGrow: 1}}></TopicList>
       </div>
     </div>
