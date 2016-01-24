@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+body, html {
+    min-width: 500px;
+}
+.container {
+    width: 100%;
+    padding-top: 50px;
+}
+#chart {
+    text-align: center;
+}
+.navbar-center {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    margin-top: 6px;
+}
+.picker__frame {
+    width: 375px !important;
+}
+.picker__table, .picker__day-display {
+    display: none !important;
+}
+.picker__month-display {
+    font-size: 4.5rem;
+    font-weight: 400;
+}
+.content {
+    padding: 15px;
+}
+svg {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE/Edge */
+    user-select: none;
+    /* non-prefixed version, currently
+                                  not supported by any browser */
+    cursor: default;
+}
